@@ -22,7 +22,7 @@ resource "aws_eks_node_group" "my_private_nodes" {
   subnet_ids = var.cluster_subnets["private_subnets"]
 
   capacity_type  = "ON_DEMAND"
-  instance_types = ["t3.small"]
+  instance_types = ["t3.medium"]
 
   scaling_config {
     desired_size = 2
@@ -37,4 +37,7 @@ resource "aws_eks_node_group" "my_private_nodes" {
   labels = {
     role = "general"
   }
+}
+data "aws_eks_cluster_auth" "auth" {
+  name = aws_eks_cluster.my_cluster.name
 }

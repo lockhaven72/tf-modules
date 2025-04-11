@@ -1,0 +1,12 @@
+# monitoring/values.yaml
+grafana:
+  enabled: true
+  adminPassword: "admin123"
+  service:
+    type: LoadBalancer
+
+prometheus:
+  prometheusSpec:
+    storageSpec:
+      emptyDir: {}
+
